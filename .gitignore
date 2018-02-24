@@ -1,6 +1,10 @@
+.idea
+.iml
+out
 *.class
 *.iml
 .idea/
 testData/
 out/
 target/
+node_modules
