@@ -1,0 +1,41 @@
+
+.main {
+    position: fixed;
+    background-image: url('./ophthalmology-background.jpg');
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: -1;
+}
+
+.login-form, .welcome-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    min-width: 200px;
+}
+
+
+.main .welcome-section  > h1 {
+    position: relative;
+    text-align: center;
+    font-weight: 700;
+    color: #0000cd;
+    font-size: 2rem;
+    
+}
+
+.main .welcome-section > button {
+    margin-top: 2rem;
+    position: relative;
+    max-width: 20%;
+    min-width: 140px;
+    height: 3rem;
+}

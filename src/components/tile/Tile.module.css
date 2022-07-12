@@ -1,0 +1,20 @@
+.main {
+    border-bottom: 1px solid black;
+    padding: 0.5rem;
+}
+
+.main .avatar-size {
+    width: 4rem;
+    height: 4rem;
+}
+
+.activated {
+    border-radius: 50%;
+    padding: 0.5rem 0.5rem 0.7rem 0.5rem;
+    background-color: #32af5c;
+}
+
+.activated .icon-size {
+    height: 2.5rem;
+    width: 1.5rem;
+}
