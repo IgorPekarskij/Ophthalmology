@@ -49,7 +49,7 @@ export function UsersPage() {
         <>
             <h1>Users list</h1>
             <Tile />
-            <PillContainer removePill={removePill} items={items} />
+            {/* <PillContainer removePill={removePill} items={items} /> */}
         </>
     );
 }

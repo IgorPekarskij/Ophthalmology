@@ -7,7 +7,7 @@ export function InputField(props) {
         placeholder = "Введите текст",
         isRequired = false,
         showLabel = true,
-        defaultValue,
+        defaultValue = "",
     } = { ...props };
 
     const [value, setValue] = useState(defaultValue);
