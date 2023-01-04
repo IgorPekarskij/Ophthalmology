@@ -1,0 +1,9 @@
+.main {
+    min-height: 100vh;
+    overflow: auto;
+    background: transparent;
+}
+
+.content {
+    padding-top: 3.125rem;
+}
