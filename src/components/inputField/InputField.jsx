@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export function InputField(props) {
     const {
+        name = "",
         label = "",
         type = "text",
         placeholder = "Введите текст",
@@ -14,7 +15,7 @@ export function InputField(props) {
 
     const changeValueHandler = (e) => {
         setValue(e.target.value);
-        props.onChangeHandler(e.target.value);
+        props.onChangeHandler({name: name, value: e.target.value});
     };
 
     return (
