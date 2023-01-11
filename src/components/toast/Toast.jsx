@@ -2,7 +2,7 @@ export function Toast(props) {
     const { message = "Success", theme = "success" } = { ...props };
     return (
         <>
-            <div className="slds-notify_container slds-is-relative">
+            <div className="slds-notify_container slds-is-absolute">
                 <div
                     className={`slds-notify slds-notify_toast slds-theme_${theme}`}
                     role="status"

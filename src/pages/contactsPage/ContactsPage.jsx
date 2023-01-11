@@ -1,40 +1,39 @@
 import {useState} from "react";
-import {Modal} from "../../components/modal";
 import {PageHeader} from "../../components/pageHeader";
-import {NewContactForm} from "../../components/newContactForm";
+import {NewPatient} from "../../components/newPatient";
+
+import {
+    PATIENTS_PAGE_TITLE,
+    CREATE_PATIENT_BUTTON_TITLE
+} from "../../components/labels"
 
 export function ContactsPage() {
     const [showCreateModal, setShowCreateModal] = useState(false);
-    const [newContact, setNewContact] = useState(null);
 
-    const closeCreateContactModal = () => {
+    const closeModal = () => {
         setShowCreateModal(false);
-        setNewContact(null)
     }
 
-    const saveHandler = () => {
-        console.log(newContact)
-    }
+    const createContact = (data) => {
+        console.log(data)
 
+    }
 
     return (
         <>
             <div className="slds-m-around_medium">
-                <PageHeader icon="people" title="Пациенты">
+                <PageHeader icon="people" title={PATIENTS_PAGE_TITLE}>
                     <button
                         className="slds-button slds-button--brand"
-                        onClick={() => { setShowCreateModal(true)}}
-                    >Создать контакт</button>
+                        onClick={ () => { setShowCreateModal(true) } }
+                    > {CREATE_PATIENT_BUTTON_TITLE}
+                    </button>
                 </PageHeader>
+                {showCreateModal ? <NewPatient onClose={closeModal} onSave={createContact}/> : null}
 
-                {showCreateModal ?
-                    <Modal header="Новый пациент" close={closeCreateContactModal} save={saveHandler}>
-                        <NewContactForm changeContact={setNewContact}/>
-
-                    </Modal> :
-                    null
-                }
-                <h1>Contacts list</h1>
+                <div>
+                    <h1>Contacts list</h1>
+                </div>
             </div>
         </>
     );

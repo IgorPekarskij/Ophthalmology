@@ -1,0 +1,14 @@
+
+const PATIENTS_PAGE_TITLE = "Пациенты";
+const CREATE_PATIENT_BUTTON_TITLE = "Создать пациента";
+const CREATE_CONTACT_TITLE = "Новый пациент";
+const CLOSE_BUTTON_TITLE = "Закрыть";
+const SAVE_BUTTON_TITLE = "Создать";
+
+export {
+    PATIENTS_PAGE_TITLE,
+    CREATE_CONTACT_TITLE,
+    CLOSE_BUTTON_TITLE,
+    SAVE_BUTTON_TITLE,
+    CREATE_PATIENT_BUTTON_TITLE
+}

@@ -2,16 +2,11 @@
 export function Modal(props) {
     const {
         header = "Создать",
-        cancelButton = "Закрыть",
-        saveButton = "Сохранить"
+        cancelButton = "Закрыть"
     } = {...props}
 
     const closeModal = () => {
         props.close();
-    }
-
-    const saveData = () => {
-        props.save();
     }
 
     return (
@@ -32,8 +27,7 @@ export function Modal(props) {
                         {props.children}
                     </div>
                     <div className="slds-modal__footer">
-                        <button className="slds-button slds-button_neutral" aria-label="Cancel and close" onClick={closeModal}>{cancelButton}</button>
-                        <button className="slds-button slds-button_brand" onClick={() => saveData()}>{saveButton}</button>
+                        {props.actions}
                     </div>
                 </div>
             </section>
