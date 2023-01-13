@@ -1,0 +1,1 @@
+export {NewPatient} from "./NewPatient"

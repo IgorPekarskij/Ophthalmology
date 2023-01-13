@@ -7,14 +7,6 @@ export function MainPage() {
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
 
-    const getRoutByUserType = () => {
-        return context.userType === "admin" ? "/users" : "/contacts";
-    };
 
-    useEffect(() => {
-        context.isLoggedIn
-            ? navigate(getRoutByUserType(), { replace: true })
-            : navigate("/login", { replace: true });
-    }, []);
     return null;
 }

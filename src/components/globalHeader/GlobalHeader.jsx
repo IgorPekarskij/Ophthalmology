@@ -1,15 +1,39 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import {useContext, useEffect} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import { GlobalContext } from "../../context/globalContext";
 import styles from "./GlobalHeader.module.css";
 
 export function GlobalHeader(props) {
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
+
+    const getRoutByUserType = () => {
+        // return context.userType === "admin" ? "/users" : "/contacts";
+        return "/contacts";
+    };
+
+    useEffect(() => {
+        context.isLoggedIn
+            ? navigate(getRoutByUserType(), { replace: true })
+            : navigate("/login", { replace: true });
+    }, []);
+
     const logoutUser = () => {
         context.logoutUser();
         navigate("/login", { replace: true });
     };
+
+    const getMenuItems = () => {
+        return (
+            context.isLoggedIn ?
+                <>
+                    <ul className={styles['menu-items']}>
+                        <Link to="/contacts">Пациенты</Link>
+                    </ul>
+                </> :
+            null
+        )
+    }
 
     return (
         <header className="slds-global-header_container">
@@ -19,6 +43,7 @@ export function GlobalHeader(props) {
                         <span className="slds-assistive-text">Salesforce</span>
                     </div>
                 </div>
+                {getMenuItems()}
                 <div className="slds-global-header__item">
                     <ul className="slds-global-actions">
                         {context.isLoggedIn ? (
@@ -49,7 +74,6 @@ export function GlobalHeader(props) {
                                         </span>
                                     </div>
                                 </li>
-
                                 <li className="slds-global-actions__item">
                                     <button
                                         className={`slds-button slds-global-actions__item-action ${styles["login-link"]}`}
