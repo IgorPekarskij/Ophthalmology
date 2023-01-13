@@ -9,7 +9,7 @@ const InputField = forwardRef((props, ref) => {
         isRequired = false,
         showLabel = true,
         defaultValue = ""
-    } = { ...props };
+    } = props;
 
     const [value, setValue] = useState(defaultValue);
     const [isInvalid, setIsInvalid] = useState(false);

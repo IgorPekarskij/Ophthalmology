@@ -3,7 +3,7 @@ export function Modal(props) {
     const {
         header = "Создать",
         cancelButton = "Закрыть"
-    } = {...props}
+    } = props;
 
     const closeModal = () => {
         props.close();

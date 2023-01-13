@@ -1,0 +1,10 @@
+
+.table-main {
+    overflow: auto
+}
+
+.sticky-head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
