@@ -10,14 +10,19 @@ import {
 import {Toast} from "../toast";
 
 export function NewPatient(props) {
-    const [newPatient, setNewPatient] = useState(null);
+    const {
+        patient = {},
+        onClose = Function.prototype,
+        onSave = Function.prototype
+    } = props;
+    const [newPatient, setNewPatient] = useState(patient);
     const [showToast, setShowToast] = useState(false);
     const [toastTheme, setToastTheme] = useState("error");
     const [message, setMessage] = useState("");
     const newPatientFormRef = createRef();
 
     const closeModal = () => {
-        props.onClose();
+        onClose();
         setNewPatient(null)
     }
 
@@ -25,7 +30,7 @@ export function NewPatient(props) {
         const isFormValid = newPatientFormRef.current.validate();
 
         if(isFormValid) {
-            props.onSave(newPatient);
+            onSave(newPatient);
         } else {
             showError();
         }
@@ -45,8 +50,15 @@ export function NewPatient(props) {
     const modalButtons = () => {
         return (
             <>
-                <button className="slds-button slds-button_neutral" aria-label={CLOSE_BUTTON_TITLE} onClick={closeModal}>{CLOSE_BUTTON_TITLE}</button>
-                <button className="slds-button slds-button_brand" onClick={createContact}>{SAVE_BUTTON_TITLE}</button>
+                <button
+                    className="slds-button slds-button_neutral"
+                    aria-label={CLOSE_BUTTON_TITLE}
+                    onClick={closeModal}
+                >{CLOSE_BUTTON_TITLE}</button>
+                <button
+                    className="slds-button slds-button_brand"
+                    onClick={createContact}
+                >{SAVE_BUTTON_TITLE}</button>
             </>
         )
     }
@@ -54,7 +66,7 @@ export function NewPatient(props) {
     return (
         <>
             <Modal header={CREATE_CONTACT_TITLE} actions={modalButtons()} close={closeModal}>
-                <NewPatientForm ref={newPatientFormRef} changePatient={setNewPatient}/>
+                <NewPatientForm patient={newPatient} ref={newPatientFormRef} changePatient={setNewPatient}/>
             </Modal>
             {showToast ? (
                 <Toast
