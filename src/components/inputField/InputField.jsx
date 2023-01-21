@@ -8,10 +8,10 @@ const InputField = forwardRef((props, ref) => {
         placeholder = "Введите текст",
         isRequired = false,
         showLabel = true,
-        defaultValue = ""
+        value = "",
     } = props;
 
-    const [value, setValue] = useState(defaultValue);
+    const [newValue, setNewValue] = useState(value);
     const [isInvalid, setIsInvalid] = useState(false);
 
     useImperativeHandle(ref, () => {
@@ -23,12 +23,12 @@ const InputField = forwardRef((props, ref) => {
     });
 
     const changeValueHandler = (e) => {
-        setValue(e.target.value);
+        setNewValue(e.target.value);
         props.onChangeHandler({name: name, value: e.target.value});
     };
 
     const validate = () => {
-        if(isRequired && !value) {
+        if(isRequired && !newValue) {
             setIsInvalid(true);
         } else {
             setIsInvalid(false);
@@ -67,7 +67,7 @@ const InputField = forwardRef((props, ref) => {
                     placeholder={placeholder}
                     required={isRequired}
                     className="slds-input"
-                    value={value}
+                    value={newValue}
                     onChange={changeValueHandler}
                     onBlur={validate}
                 />
