@@ -5,6 +5,7 @@ import { ContactsPage } from "./pages/contactsPage";
 import { NotFoundPage } from "./pages/notFoundPage";
 import { MainLayout } from "./components/mainLayout/";
 import { MainPage } from "./pages/mainPage";
+import {ContactDetailPage} from "./pages/ContactDetailPage";
 
 export function App() {
     return (
@@ -14,6 +15,7 @@ export function App() {
                 <Route path="login" element={<LoginPage />} />
                 <Route path="users" element={<UsersPage />} />
                 <Route path="contacts" element={<ContactsPage />} />
+                <Route path="contact/:id" element={<ContactDetailPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>

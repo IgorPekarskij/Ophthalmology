@@ -10,10 +10,6 @@ const NewPatientForm = forwardRef((props, ref) => {
         setContact(newContact);
         props.changePatient(newContact);
     }
-    /*const lastNameRef = useRef();
-    const firstNameRef = useRef();
-    const birthdateRef = useRef();
-    const phoneRef = useRef();*/
     const refs = [useRef(), useRef(), useRef(), useRef()];
     const [lastNameRef, firstNameRef, birthdateRef, phoneRef] = refs;
 
