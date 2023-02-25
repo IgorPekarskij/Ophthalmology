@@ -19,6 +19,12 @@ export function LoginForm(props) {
         }
     }
 
+    const doSubmit = (key) => {
+        if(key.keyCode === 13) {
+            props.doLogin(userName, password);
+        }
+    }
+
     return (
         <>
             <section
@@ -26,6 +32,7 @@ export function LoginForm(props) {
                 tabIndex="-1"
                 aria-modal="true"
                 className={sectionStyles.join(" ")}
+                onKeyUp={doSubmit}
             >
                 <div className="slds-modal__container">
                     <div className="slds-modal__content slds-p-around_large slds-modal__content_headless">

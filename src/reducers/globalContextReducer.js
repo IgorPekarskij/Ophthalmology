@@ -1,8 +1,9 @@
+import CookieService from "../services/cookieService";
+
 export function globalContextReducer(state, { type, payload }) {
-    console.log("type ", type);
+    const cookieService = new CookieService();
     switch (type) {
         case "SET_LOGGED_IN_USER": {
-            console.log("SET_LOGGED_IN_USER", payload);
             const isUserLoggedIn =
                 payload.user && payload.user.id && payload.user.id.length > 0;
 
@@ -13,14 +14,14 @@ export function globalContextReducer(state, { type, payload }) {
                 userName: payload?.user?.userName,
                 userType: payload?.user?.userType,
             };
-
-            localStorage.setItem("user-data", JSON.stringify(newState));
+            const today = new Date();
+            const nextDay = today.setDate(today.getDate() + 1);
+            cookieService.setCookie("user-data", JSON.stringify(newState), {expires: nextDay});
             return newState;
         }
 
         case "LOGOUT_USER": {
-            console.log("LOGOUT_USER");
-            localStorage.removeItem("user-data");
+            cookieService.removeCookie("user-data");
             return {
                 ...state,
                 isLoggedIn: false,
@@ -29,8 +30,14 @@ export function globalContextReducer(state, { type, payload }) {
             };
         }
 
+        case "SET_CURRENT_PAGE": {
+            return {
+                ...state,
+                currentPage: payload.pageRout
+            };
+        }
+
         default: {
-            console.log("default");
             return state;
         }
     }

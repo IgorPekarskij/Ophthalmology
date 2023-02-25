@@ -1,22 +1,35 @@
-import {useContext, useEffect} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {useContext, useEffect, useRef} from "react";
+import {Link, useNavigate, useLocation } from "react-router-dom";
 import { GlobalContext } from "../../context/globalContext";
 import styles from "./GlobalHeader.module.css";
 
-export function GlobalHeader(props) {
+export function GlobalHeader() {
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
-
-    const getRoutByUserType = () => {
-        // return context.userType === "admin" ? "/users" : "/contacts";
-        return "/contacts";
-    };
+    const location = useLocation();
+    const didMount = useRef(false);
 
     useEffect(() => {
+        const newPath = `${location.pathname}${location.search? location.search : ''}`;
+        checkLogin(newPath);
+    }, [context.isLoggedIn]);
+
+    useEffect(() => {
+        const newPath = `${location.pathname}${location.search? location.search : ''}`;
+        if ( !didMount.current ) {
+            didMount.current = true;
+        } else {
+            if (context.currentPage !== newPath) {
+                context.setCurrentPage(newPath);
+            }
+        }
+    }, [location.pathname, location.search]);
+
+    const checkLogin = (path) => {
         context.isLoggedIn
-            ? navigate(getRoutByUserType(), { replace: true })
+            ? navigate(path, { replace: true })
             : navigate("/login", { replace: true });
-    }, []);
+    }
 
     const logoutUser = () => {
         context.logoutUser();
