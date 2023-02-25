@@ -12,8 +12,7 @@ const defaultState = {
 };
 
 export const GlobalContextProvider = ({ children }) => {
-    const cookieService = new CookieService();
-    const userData = cookieService.getCookie("user-data");
+    const userData = CookieService.getCookie("user-data");
     let initState = defaultState;
     if (userData) {
         initState = JSON.parse(userData);

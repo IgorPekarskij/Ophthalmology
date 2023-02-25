@@ -1,5 +1,5 @@
 
-export default class CookieService {
+class CookieService {
     setCookie(name, value, options = {}) {
         options = {
             path : '/',
@@ -31,3 +31,5 @@ export default class CookieService {
         return matches ? decodeURIComponent(matches[1]) : undefined;
     }
 }
+
+export default new CookieService();

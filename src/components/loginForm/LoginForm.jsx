@@ -11,10 +11,11 @@ export function LoginForm(props) {
     const changeValueHandler = (data) => {
         switch (data.name) {
             case "password" :
-                setUserName(data.value)
+                setPassword(data.value);
                 break;
+
             case "userName" :
-                setPassword(data.value)
+                setUserName(data.value);
                 break;
         }
     }

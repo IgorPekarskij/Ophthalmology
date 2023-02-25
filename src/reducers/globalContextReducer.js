@@ -1,7 +1,6 @@
 import CookieService from "../services/cookieService";
 
 export function globalContextReducer(state, { type, payload }) {
-    const cookieService = new CookieService();
     switch (type) {
         case "SET_LOGGED_IN_USER": {
             const isUserLoggedIn =
@@ -16,12 +15,12 @@ export function globalContextReducer(state, { type, payload }) {
             };
             const today = new Date();
             const nextDay = today.setDate(today.getDate() + 1);
-            cookieService.setCookie("user-data", JSON.stringify(newState), {expires: nextDay});
+            CookieService.setCookie("user-data", JSON.stringify(newState), {expires: nextDay});
             return newState;
         }
 
         case "LOGOUT_USER": {
-            cookieService.removeCookie("user-data");
+            CookieService.removeCookie("user-data");
             return {
                 ...state,
                 isLoggedIn: false,

@@ -3,14 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../context/globalContext";
 import { LoginForm } from "../../components/loginForm";
 import { Toast } from "../../components/toast";
+import UserService from "../../http/userService";
 
 import styles from "./LoginPage.module.css";
-
-const testUser = {
-    id: "001",
-    userName: "Igor Pekarsky",
-    userType: "admin",
-};
 
 export function LoginPage() {
     const { setLoggedInUser } = useContext(GlobalContext);
@@ -20,18 +15,27 @@ export function LoginPage() {
     const [message, setMessage] = useState("");
 
     const doLogin = (userName, password) => {
-        //setShowToast(true);
         if (userName && password) {
-            //localStorage.setItem("user-data", JSON.stringify(testUser));
-            setLoggedInUser(testUser);
-            const url = testUser.userType === "admin" ? "/users" : "/contacts";
-            navigate(url, { replace: true });
+            console.log('userName ', userName)
+            console.log('password ', password)
+            try {
+                const user = UserService.checkCredentials(userName, password);
+                setLoggedInUser(user);
+                const url = user.userType === "admin" ? "/users" : "/contacts";
+                navigate(url, {replace: true});
+            } catch (e) {
+                showToastMessage("error", e.message);
+            }
         } else {
-            setToastTheme("error");
-            setMessage("Введите имя пользователя и пароль");
-            setShowToast(true);
+            showToastMessage("error", "Введите имя пользователя и пароль");
         }
     };
+
+    const showToastMessage = (theme, message) => {
+        setToastTheme(theme);
+        setMessage(message);
+        setShowToast(true);
+    }
 
     return (
         <div className={styles.main}>
