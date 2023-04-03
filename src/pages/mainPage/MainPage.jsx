@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../context/globalContext";
+import {Text} from "@chakra-ui/react"
 import styles from "./MainPage.module.css";
 
 export function MainPage() {
@@ -8,5 +9,7 @@ export function MainPage() {
     const navigate = useNavigate();
 
 
-    return null;
+    return (<>
+        <Text fontSize="xl" textAlign="center">Main page</Text>
+    </>);
 }

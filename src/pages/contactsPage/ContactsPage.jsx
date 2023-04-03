@@ -5,7 +5,7 @@ import {NewPatient} from "../../components/newPatient";
 import {
     PATIENTS_PAGE_TITLE,
     CREATE_PATIENT_BUTTON_TITLE
-} from "../../components/labels"
+} from "../../labels"
 import {DataTable} from "../../components/dataTable";
 
 export function ContactsPage() {

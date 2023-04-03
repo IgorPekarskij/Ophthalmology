@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {DataTable} from "../../components/dataTable";
 import {NewPatient} from "../../components/newPatient";
@@ -33,6 +33,10 @@ export function ContactDetailPage() {
         closeModal();
     }
 
+    const createNewAppointment = () => {
+
+    }
+
     return (
         <>
             <article className="slds-card slds-m-around--medium">
@@ -51,6 +55,7 @@ export function ContactDetailPage() {
                             </h2>
                         </div>
                         <div className="slds-no-flex">
+                            <Link to={`/contact/${id}/appointment`} className="slds-truncate slds-button slds-button_neutral" title="Новый прием">Новый прием</Link>
                             <button className="slds-button slds-button_neutral" onClick={() => setShowEditWindow(true)}>Редактировать</button>
                         </div>
                     </header>

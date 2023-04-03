@@ -6,7 +6,7 @@ import {
     CREATE_CONTACT_TITLE,
     CLOSE_BUTTON_TITLE,
     SAVE_BUTTON_TITLE,
-} from "../labels"
+} from "../../labels"
 import {Toast} from "../toast";
 
 export function NewPatient(props) {

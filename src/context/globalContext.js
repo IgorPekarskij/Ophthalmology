@@ -17,7 +17,6 @@ export const GlobalContextProvider = ({ children }) => {
     if (userData) {
         initState = JSON.parse(userData);
     }
-    console.log("initState ", initState);
     const [value, dispatch] = useReducer(globalContextReducer, initState);
 
     value.setLoggedInUser = (user) => {

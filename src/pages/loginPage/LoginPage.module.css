@@ -10,16 +10,29 @@
     background-size: cover;
 }
 
-    .login-form, .welcome-section {
-        position: fixed;
-        top: 15%;
-        left: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: center; 
-        transform: translate(-50%, -50%);
-        width: 100%;
-    }
+ .welcome-section {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.login-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    min-width: 260px;
+    max-width: 450px;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
 
 
 .main .welcome-section > h1 {
@@ -28,7 +41,7 @@
     font-weight: 700;
     color: #0000cd;
     font-size: 2rem;
-    
+
 }
 
 /* .main .welcome-section > button {

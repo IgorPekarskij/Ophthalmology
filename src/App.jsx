@@ -5,7 +5,8 @@ import { ContactsPage } from "./pages/contactsPage";
 import { NotFoundPage } from "./pages/notFoundPage";
 import { MainLayout } from "./components/mainLayout/";
 import { MainPage } from "./pages/mainPage";
-import {ContactDetailPage} from "./pages/ContactDetailPage";
+import {ContactDetailPage} from "./pages/contactDetailPage";
+import {NewAppointmentPage} from "./pages/newAppointmentPage";
 
 export function App() {
     return (
@@ -16,6 +17,7 @@ export function App() {
                 <Route path="users" element={<UsersPage />} />
                 <Route path="contacts" element={<ContactsPage />} />
                 <Route path="contact/:id" element={<ContactDetailPage />} />
+                <Route path="contact/:id/appointment" element={<NewAppointmentPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
